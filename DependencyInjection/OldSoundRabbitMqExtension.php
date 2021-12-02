@@ -87,7 +87,7 @@ class OldSoundRabbitMqExtension extends Extension
             
 
             $classParam =
-                $connection['ssl_options'] == null
+                $connection['ssl_context'] == null
                     ? $classParam . $connectionSuffix.'%'
                     : $classParam . 'ssl.' . $connectionSuffix.'%';
 
