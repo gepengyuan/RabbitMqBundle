@@ -82,8 +82,15 @@ class OldSoundRabbitMqExtension extends Extension
             $connectionSuffix = $connection['use_socket'] ? 'socket_connection.class' : 'connection.class';
             $classParam =
                 $connection['lazy']
-                    ? '%old_sound_rabbit_mq.lazy.'.$connectionSuffix.'%'
-                    : '%old_sound_rabbit_mq.'.$connectionSuffix.'%';
+                    ? '%old_sound_rabbit_mq.lazy.'
+                    : '%old_sound_rabbit_mq.';
+            
+
+            $classParam =
+                $connection['ssl_options'] == null
+                    ? $classParam . $connectionSuffix.'%'
+                    : $classParam . 'ssl.' . $connectionSuffix.'%';
+
 
             $definition = new Definition('%old_sound_rabbit_mq.connection_factory.class%', array(
                 $classParam, $connection,
@@ -189,11 +196,6 @@ class OldSoundRabbitMqExtension extends Extension
                 $definition->addMethodCall('setDefaultRoutingKey', array($producer['default_routing_key']));
                 $definition->addMethodCall('setContentType', array($producer['default_content_type']));
                 $definition->addMethodCall('setDeliveryMode', array($producer['default_delivery_mode']));
-                if (isset($producer['validator'])) {
-                    $definition->addMethodCall('setValidator', array($producer['validator']['class'],
-                                                                     $producer['validator']['schema'],
-                                                                     $producer['validator']['additionalProperties']));
-                }
             }
         } else {
             foreach ($this->config['producers'] as $key => $producer) {
