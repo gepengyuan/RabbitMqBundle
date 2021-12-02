@@ -86,6 +86,10 @@ class AMQPConnectionFactory
             $options['write_timeout'] = $options['write_timeout'] ?? $this->parameters['read_write_timeout'];
         }
 
+        if ($this->class == AMQPSSLConnection::class || is_subclass_of($this->class, AMQPLazySSLConnection::class)) {
+            $options['ssl_options'] = $options['ssl_context'] ?? null;
+        }
+
         // No need to unpack options, they will be handled inside connection classes
         return $this->class::create_connection($hosts, $options);
     }
