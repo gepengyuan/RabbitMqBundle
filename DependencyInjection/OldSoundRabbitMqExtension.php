@@ -85,7 +85,7 @@ class OldSoundRabbitMqExtension extends Extension
                 $connection['lazy']
                     ? '%old_sound_rabbit_mq.lazy.'
                     : '%old_sound_rabbit_mq.';
-            
+
 
             $classParam =
                 $connection['ssl_context'] == null
@@ -194,13 +194,13 @@ class OldSoundRabbitMqExtension extends Extension
                         ->setPublic(false);
                 }
 
-                $definition->addMethodCall('setDefaultRoutingKey', array($producer['default_routing_key']));
-                $definition->addMethodCall('setContentType', array($producer['default_content_type']));
-                $definition->addMethodCall('setDeliveryMode', array($producer['default_delivery_mode']));
+                $definition->addMethodCall('setDefaultRoutingKey', [$producer['default_routing_key']]);
+                $definition->addMethodCall('setContentType', [$producer['default_content_type']]);
+                $definition->addMethodCall('setDeliveryMode', [$producer['default_delivery_mode']]);
                 if (isset($producer['validator'])) {
-                    $definition->addMethodCall('setValidator', array($producer['validator']['class'],
+                    $definition->addMethodCall('setValidator', [$producer['validator']['class'],
                                                                      $producer['validator']['schema'],
-                                                                     $producer['validator']['additionalProperties']));
+                                                                     $producer['validator']['additionalProperties'], ]);
                 }
                 $definition->addMethodCall('setDefaultRoutingKey', [$producer['default_routing_key']]);
                 $definition->addMethodCall('setContentType', [$producer['default_content_type']]);

@@ -13,9 +13,10 @@ class JsonValidator implements ValidatorInterface
     private $schema = null;
     private $schema_url = null;
 
-    public function setSchema($schema, $additionalProperties = array()) {
+    public function setSchema($schema, $additionalProperties = [])
+    {
         $this->schema = $schema;
-        if(isset($additionalProperties['definitions']) && isset($additionalProperties['schema_url'])){
+        if (isset($additionalProperties['definitions']) && isset($additionalProperties['schema_url'])) {
             $this->definitions = $additionalProperties['definitions'];
             $this->schema_url = $additionalProperties['schema_url'];
         }
@@ -24,7 +25,7 @@ class JsonValidator implements ValidatorInterface
 
     public function validate($msg)
     {
-        try{
+        try {
             $options = new Context();
 
             if ($this->definitions != null) {
@@ -36,12 +37,13 @@ class JsonValidator implements ValidatorInterface
             $schema = Schema::import(json_decode(file_get_contents($this->schema, true)), $options);
             $schema->in(json_decode($msg));
             return null;
-        }catch (Exception $e){
+        } catch (Exception $e) {
             return $e->getMessage();
         }
     }
 
-    public function getContentType() {
+    public function getContentType()
+    {
         return "application/json";
     }
 }
