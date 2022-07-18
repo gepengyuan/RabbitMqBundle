@@ -85,7 +85,7 @@ class OldSoundRabbitMqExtension extends Extension
                 $connection['lazy']
                     ? '%old_sound_rabbit_mq.lazy.'
                     : '%old_sound_rabbit_mq.';
-            
+
 
             $classParam =
                 $connection['ssl_context'] == null
@@ -193,11 +193,11 @@ class OldSoundRabbitMqExtension extends Extension
                         ->registerAliasForArgument($producerServiceName, $producer['class'], $argName)
                         ->setPublic(false);
                 }
-                
+
                 $definition->addMethodCall('setDefaultRoutingKey', [$producer['default_routing_key']]);
                 $definition->addMethodCall('setContentType', [$producer['default_content_type']]);
                 $definition->addMethodCall('setDeliveryMode', [$producer['default_delivery_mode']]);
-                
+
                 if (isset($producer['validator'])) {
                     $definition->addMethodCall('setValidator', [$producer['validator']['class'], $producer['validator']['schema'], $producer['validator']['additionalProperties']]);
                 }

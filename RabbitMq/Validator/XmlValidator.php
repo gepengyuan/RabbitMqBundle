@@ -8,7 +8,8 @@ class XmlValidator implements ValidatorInterface
 {
     private $schema = null;
 
-    public function setSchema($schema, $additionalProperties = array()) {
+    public function setSchema($schema, $additionalProperties = [])
+    {
         $this->schema = $schema;
     }
 
@@ -19,7 +20,8 @@ class XmlValidator implements ValidatorInterface
         return $xml->schemaValidate($this->schema) == true ? null : "XML schema validation failed.";
     }
 
-    public function getContentType() {
+    public function getContentType()
+    {
         return "application/xml";
     }
 }

@@ -335,10 +335,10 @@ class OldSoundRabbitMqExtensionTest extends TestCase
                         "OldSound\RabbitMqBundle\TestValidation\schema\JsonValidation.schema",
                         [
                             "definitions" => null,
-                            "schema_url" => null
-                        ]
+                            "schema_url" => null,
+                        ],
                     ],
-                ]
+                ],
             ],
             $definition->getMethodCalls()
         );

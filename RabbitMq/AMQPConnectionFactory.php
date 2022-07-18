@@ -90,7 +90,7 @@ class AMQPConnectionFactory
         if ($this->class == AMQPSSLConnection::class || is_subclass_of($this->class, AMQPSSLConnection::class)) {
             $options['ssl_options'] = $options['ssl_context'] ?? null;
         }
-        
+
         // No need to unpack options, they will be handled inside connection classes
         return $this->class::create_connection($hosts, $options);
     }

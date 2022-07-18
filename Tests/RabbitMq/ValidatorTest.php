@@ -18,15 +18,14 @@ class JsonSchemaTest extends TestCase
         );
 
         $json_msg = <<<'JSON'
-        {
-            "firstName": "John",
-            "lastName": "Doe",
-            "age": 21
-        }
-JSON;
+                    {
+                        "firstName": "John",
+                        "lastName": "Doe",
+                        "age": 21
+                    }
+            JSON;
         $jsonValidator->method('getContentType')->willReturn('application/json');
         $this->assertEquals(null, $jsonValidator->validate($json_msg));
-        
     }
 
     public function testXmlValidatorFunction()
@@ -41,12 +40,12 @@ JSON;
         );
 
         $xml_msg = <<<'XML'
-        <person>
-        <firstName>John</firstName>
-        <from>Doe</from>
-        <age>21</age>
-        </person>
-XML;
+                    <person>
+                    <firstName>John</firstName>
+                    <from>Doe</from>
+                    <age>21</age>
+                    </person>
+            XML;
         $xmlValidator->method('getContentType')->willReturn('application/xml');
         $this->assertEquals(null, $xmlValidator->validate($xml_msg));
     }
@@ -57,23 +56,23 @@ XML;
             ->disableOriginalConstructor()
             ->getMock();
 
-            $jsonValidator->setSchema(
+        $jsonValidator->setSchema(
             "OldSound\RabbitMqBundle\TestValidation/schema/top_level.schema",
-            array(
+            [
                 'schema_url'=>"defs.schema",
-                'definitions'=>"%kernel.project_dir%/config/jsonschema/common_objects.schema"
-            )
+                'definitions'=>"%kernel.project_dir%/config/jsonschema/common_objects.schema",
+            ]
         );
 
         $json_msg = <<<'JSON'
-        {
-            "prefix": "Mr",
-            "firstName": "John",
-            "lastName": "Doe",
-            "age": 21,
-            "language": "EN"
-        }
-JSON;
+                    {
+                        "prefix": "Mr",
+                        "firstName": "John",
+                        "lastName": "Doe",
+                        "age": 21,
+                        "language": "EN"
+                    }
+            JSON;
         $jsonValidator->method('getContentType')->willReturn('application/json');
         $this->assertEquals(null, $jsonValidator->validate($json_msg));
     }
