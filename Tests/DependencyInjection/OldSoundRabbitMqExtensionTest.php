@@ -328,6 +328,17 @@ class OldSoundRabbitMqExtensionTest extends TestCase
                     'setDeliveryMode',
                     [2],
                 ],
+                [
+                    'setValidator',
+                    [
+                        "OldSound\RabbitMqBundle\RabbitMq\JsonValidator",
+                        "OldSound\RabbitMqBundle\TestValidation\schema\JsonValidation.schema",
+                        [
+                            "definitions" => null,
+                            "schema_url" => null,
+                        ],
+                    ],
+                ],
             ],
             $definition->getMethodCalls()
         );

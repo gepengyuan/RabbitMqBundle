@@ -5,6 +5,7 @@ namespace OldSound\RabbitMqBundle\RabbitMq;
 use OldSound\RabbitMqBundle\Provider\ConnectionParametersProviderInterface;
 use PhpAmqpLib\Connection\AbstractConnection;
 use PhpAmqpLib\Connection\AMQPSocketConnection;
+use PhpAmqpLib\Connection\AMQPSSLConnection;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 
 class AMQPConnectionFactory
@@ -84,6 +85,10 @@ class AMQPConnectionFactory
         if ($this->class == AMQPSocketConnection::class || is_subclass_of($this->class, AMQPSocketConnection::class)) {
             $options['read_timeout'] ??= $this->parameters['read_write_timeout'];
             $options['write_timeout'] ??= $this->parameters['read_write_timeout'];
+        }
+
+        if ($this->class == AMQPSSLConnection::class || is_subclass_of($this->class, AMQPSSLConnection::class)) {
+            $options['ssl_options'] = $options['ssl_context'] ?? null;
         }
 
         // No need to unpack options, they will be handled inside connection classes
