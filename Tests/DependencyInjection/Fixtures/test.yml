@@ -127,6 +127,8 @@ old_sound_rabbit_mq:
                   - 'android.#.upload'
                   - 'iphone.upload'
             callback:        foo.callback
+            options:
+                no_ack:      true
 
         default_consumer:
             exchange_options:
@@ -174,6 +176,8 @@ old_sound_rabbit_mq:
                       - 'iphone.upload'
                     callback:        foo.multiple_test2.callback
             queues_provider: foo.queues_provider
+            options:
+                no_ack:      true
 
     dynamic_consumers:
         foo_dyn_consumer:
@@ -183,6 +187,9 @@ old_sound_rabbit_mq:
                 type:           direct
             callback: foo.dynamic.callback
             queue_options_provider: foo.dynamic.provider
+            options:
+                no_ack:      true
+
         bar_dyn_consumer:
             connection: bar_default
             exchange_options:
@@ -190,9 +197,11 @@ old_sound_rabbit_mq:
                 type:           direct
             callback: bar.dynamic.callback
             queue_options_provider: bar.dynamic.provider
+            
     bindings:
         - {exchange: foo, destination: bar, routing_key: baz}
         - {exchange: moo, connection: default2, destination: cow, nowait: true, destination_is_exchange: true, arguments: {moo: cow}}
+
     anon_consumers:
         foo_anon_consumer:
             connection:      foo_connection
@@ -207,6 +216,8 @@ old_sound_rabbit_mq:
                 arguments:   null
                 ticket:      null
             callback:        foo_anon.callback
+            options:
+                no_ack:      true
 
         default_anon_consumer:
             exchange_options:

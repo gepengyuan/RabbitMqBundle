@@ -37,6 +37,7 @@ class AMQPConnectionFactoryTest extends TestCase
             null,        // context
             false,       // keepalive
             0,           // heartbeat
+            0.0,         //channel_rpc_timeout
         ], $instance->constructParams);
     }
 
@@ -64,6 +65,7 @@ class AMQPConnectionFactoryTest extends TestCase
             false,       // keepalive
             3,           // write_timeout
             0,           // heartbeat
+            0.0,         //channel_rpc_timeout
         ], $instance->constructParams);
     }
 
@@ -94,6 +96,7 @@ class AMQPConnectionFactoryTest extends TestCase
             false,       // keepalive
             32,           // write_timeout
             0,           // heartbeat
+            0.0,         //channel_rpc_timeout
         ], $instance->constructParams);
     }
 
@@ -128,6 +131,7 @@ class AMQPConnectionFactoryTest extends TestCase
             null,        // context
             false,       // keepalive
             0,           // heartbeat
+            0.0,         //channel_rpc_timeout
         ], $instance->constructParams);
     }
 
@@ -163,6 +167,7 @@ class AMQPConnectionFactoryTest extends TestCase
             null,        // context
             true,        // keepalive
             0,           // heartbeat
+            0.0,         //channel_rpc_timeout
         ], $instance->constructParams);
     }
 
@@ -193,6 +198,7 @@ class AMQPConnectionFactoryTest extends TestCase
             null,        // context
             true,        // keepalive
             0,           // heartbeat
+            0.0,         //channel_rpc_timeout
         ], $instance->constructParams);
     }
 
@@ -223,6 +229,7 @@ class AMQPConnectionFactoryTest extends TestCase
             null,       // context
             true,       // keepalive
             0,          // heartbeat
+            0.0,        //channel_rpc_timeout
         ], $instance->constructParams);
     }
 
@@ -277,6 +284,7 @@ class AMQPConnectionFactoryTest extends TestCase
                 'context' => null, // context checked earlier
                 'keepalive' => false,
                 'heartbeat' => 0,
+                'channel_rpc_timeout' => 0.0,
             ],
         ], $instance->constructParams);
     }
@@ -319,6 +327,7 @@ class AMQPConnectionFactoryTest extends TestCase
             null,               // context
             false,              // keepalive
             0,                  // heartbeat
+            0.0,         //channel_rpc_timeout
         ], $instance->constructParams);
 
         $this->assertEquals(
@@ -351,6 +360,7 @@ class AMQPConnectionFactoryTest extends TestCase
                     'ssl_context'        => null,
                     'keepalive'          => false,
                     'heartbeat'          => 0,
+                    'channel_rpc_timeout' => 0.0,
                 ],
             ],
             $instance::$createConnectionParams
@@ -397,6 +407,7 @@ class AMQPConnectionFactoryTest extends TestCase
             null,        // context
             false,       // keepalive
             0,           // heartbeat
+            0.0,         //channel_rpc_timeout
         ], $instance->constructParams);
 
         $this->assertEquals(
@@ -422,6 +433,7 @@ class AMQPConnectionFactoryTest extends TestCase
                     'ssl_context'        => null,
                     'keepalive'          => false,
                     'heartbeat'          => 0,
+                    'channel_rpc_timeout' => 0.0,
                 ],
             ],
             $instance::$createConnectionParams
@@ -500,6 +512,7 @@ class AMQPConnectionFactoryTest extends TestCase
                 'context' => null,
                 'keepalive' => false,
                 'heartbeat' => 0,
+                'channel_rpc_timeout' => 0.0,
             ],
         ], $instance->constructParams);
 
@@ -534,6 +547,7 @@ class AMQPConnectionFactoryTest extends TestCase
                     'context'        => null, // context checked earlier
                     'keepalive'          => false,
                     'heartbeat'          => 0,
+                    'channel_rpc_timeout' => 0.0,
                 ],
             ],
             $instance::$createConnectionParams
@@ -577,6 +591,7 @@ class AMQPConnectionFactoryTest extends TestCase
             false,              // keepalive
             3,                  // write_timeout
             0,                  // heartbeat
+            0.0,         //channel_rpc_timeout
         ], $instance->constructParams);
 
         $this->assertEquals(
@@ -611,6 +626,7 @@ class AMQPConnectionFactoryTest extends TestCase
                     'read_write_timeout' => 3,
                     'read_timeout'       => 3,
                     'write_timeout'      => 3,
+                    'channel_rpc_timeout' => 0.0,
                 ],
             ],
             $instance::$createConnectionParams
@@ -677,6 +693,7 @@ class AMQPConnectionFactoryTest extends TestCase
             null,        // context
             false,       // keepalive
             0,           // heartbeat
+            0.0,         //channel_rpc_timeout
         ], $instance->constructParams);
     }
 

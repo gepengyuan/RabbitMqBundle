@@ -27,6 +27,7 @@ class AMQPConnectionFactory
         'keepalive'          => false,
         'heartbeat'          => 0,
         'hosts'              => [],
+        'channel_rpc_timeout' => 0.0,
     ];
 
     /**
@@ -55,14 +56,16 @@ class AMQPConnectionFactory
             $this->parameters['hosts'][$key] = $this->parseUrl($hostParameters);
         }
 
-        if (is_array($this->parameters['ssl_context'])) {
-            $this->parameters['context'] = ! empty($this->parameters['ssl_context'])
-                ? stream_context_create(['ssl' => $this->parameters['ssl_context']])
-                : null;
-        }
         if ($parametersProvider) {
             $this->parameters = array_merge($this->parameters, $parametersProvider->getConnectionParameters());
         }
+
+        if (is_array($this->parameters['ssl_context'])) {
+            $this->parameters['context'] = !empty($this->parameters['ssl_context'])
+                ? stream_context_create(['ssl' => $this->parameters['ssl_context']])
+                : null;
+        }
+
     }
 
     /**

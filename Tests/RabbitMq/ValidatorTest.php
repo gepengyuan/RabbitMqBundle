@@ -59,8 +59,8 @@ class JsonSchemaTest extends TestCase
         $jsonValidator->setSchema(
             "OldSound\RabbitMqBundle\TestValidation/schema/top_level.schema",
             [
-                'schema_url'=>"defs.schema",
-                'definitions'=>"%kernel.project_dir%/config/jsonschema/common_objects.schema",
+                'schema_url' => "defs.schema",
+                'definitions' => "%kernel.project_dir%/config/jsonschema/common_objects.schema",
             ]
         );
 
